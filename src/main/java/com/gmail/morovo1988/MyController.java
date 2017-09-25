@@ -266,6 +266,35 @@ public class MyController {
 
         return "index";
     }
+    @RequestMapping("/admin/type/{id}")
+    public String listGroupAdmin(
+            @PathVariable(value = "id") long typeId,
+            @RequestParam(required = false, defaultValue = "0") Integer page,
+            Model model)
+    {
+        Type type = (typeId != DEFAULT_PRODUCT_ID) ? productService.findType(typeId) : null;
+        if (page < 0) page = 0;
+
+        List<Product> products = productService
+                .findByType(type, new PageRequest(page, ITEMS_PER_PAGE, Sort.Direction.DESC, "id"));
+
+        model.addAttribute("types", productService.findTypes());
+        model.addAttribute("products", products);
+        model.addAttribute("byTypePages", getPageCount(type));
+        model.addAttribute("typeId", typeId);
+
+        User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        String login = user.getUsername();
+
+        CustomUser dbUser = userService.getUserByLogin(login);
+
+        model.addAttribute("login", login);
+        model.addAttribute("roles", user.getAuthorities());
+        model.addAttribute("email", dbUser.getEmail());
+        model.addAttribute("phone", dbUser.getPhone());
+
+        return "admin";
+    }
     @RequestMapping("/order")
     public String order(Model model) {
 

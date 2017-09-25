@@ -85,4 +85,5 @@ public class AppConfig extends WebMvcConfigurerAdapter {
         properties.setProperty("hibernate.hbm2ddl.auto", hbm2dllAuto);
         return properties;
     }
+
 }
