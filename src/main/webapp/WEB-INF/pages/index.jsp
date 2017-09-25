@@ -15,8 +15,8 @@
 
         <div id="header">
 
-            <img src="/static/images/d4.png" width="150" height="150" id="rez">
-            <p >Wheels and Discs</p>
+            <img src="/static/images/d4.png" width="150" height="150" id="rez" align="left">
+            <p >Wheels and Discs<br><div align="center"  ><h1>Hello ${login}</h1></div></p>
         </div>
             <div id="content">
 
@@ -41,6 +41,18 @@
                                         </c:forEach>
                                     </ul>
                                 </li>
+
+                                <li>   <c:url value="/update" var="updateUrl" />
+                                    <form action="${updateUrl}" method="POST" >
+                                        E-mail:<input class="btn btn-default navbar-btn" size="10" type="text" name="email" value="${email}" />
+                                        Phone:<input class="btn btn-default navbar-btn" size="10" type="text" name="phone" value="${phone}" />
+                                        <input class="btn btn-default navbar-btn" type="submit" value="Update" />
+
+                                    </form></li>
+                                <li> <c:url value="/logout" var="logoutUrl" />
+                                    <form action="${logoutUrl}" method="POST" >
+                                        <input class="btn btn-default navbar-btn" type="submit" value="LogOut" />
+                                    </form></li>
 
                             </ul>
 
@@ -102,24 +114,26 @@
 
 
 
-<div id="login">
-    <div align="center">
-        <h3>Your login is: ${login}</h3>
+    <%--<div id="login">--%>
+        <%--<div align="center">--%>
+            <%--<h3>Your login is: ${login}</h3>--%>
 
-        <c:url value="/update" var="updateUrl" />
-        <form action="${updateUrl}" method="POST" >
-            E-mail:<br/><input type="text" name="email" value="${email}" /><br/>
-            Phone:<br/><input type="text" name="phone" value="${phone}" /><br/>
-            <input type="submit" value="Update" />
+            <%--<c:url value="/update" var="updateUrl" />--%>
+            <%--<form action="${updateUrl}" method="POST" >--%>
+                <%--E-mail:<br/><input type="text" name="email" value="${email}" /><br/>--%>
+                <%--Phone:<br/><input type="text" name="phone" value="${phone}" /><br/>--%>
+                <%--<input type="submit" value="Update" />--%>
 
-            <c:url value="/logout" var="logoutUrl" />
-            <h4>Click to  <a href="${logoutUrl}">logout</a></h4>
+            <%--</form>--%>
 
-        </form>
-    </div>
+            <%--<c:url value="/logout" var="logoutUrl" />--%>
+            <%--<form action="${logoutUrl}" method="POST" >--%>
+                <%--<input type="submit" value="LogOut" />--%>
+            <%--</form>--%>
+        <%--</div>--%>
 
 
-</div>
+    <%--</div>--%>
 
 
 <script>
