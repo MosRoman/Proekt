@@ -34,11 +34,11 @@
                         <li><button type="button" id="add_product" class="btn btn-default navbar-btn">Add product</button></li>
 
                         <li><button type="button" id="delete_product" class="btn btn-default navbar-btn">Delete product</button></li>
-                        <li><button type="button" id="order_product" class="btn btn-default navbar-btn">Order product</button></li>
+                        <%--<li><button type="button" id="order_product" class="btn btn-default navbar-btn">Order product</button></li>--%>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Types <span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a href="/admin">Default</a></li>
+                                <li><a href="/admin">All</a></li>
                                 <c:forEach items="${types}" var="type">
                                     <li><a href="/admin/type/${type.id}">${type.name}</a></li>
                                 </c:forEach>
@@ -54,7 +54,7 @@
                     </ul>
 
                     <button type="button" id="basket" class="btn btn-default navbar-btn">Basket of Orders</button>
-                    <button type="button" id="basket2" class="btn btn-default navbar-btn">Basket</button>
+                    <%--<button type="button" id="basket2" class="btn btn-default navbar-btn">Basket</button>--%>
 
 
                 </div><!-- /.navbar-collapse -->

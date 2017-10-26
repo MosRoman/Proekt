@@ -28,16 +28,17 @@
                             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                                 <ul id="groupList" class="nav navbar-nav"  >
 
-                                    <input  class="btn btn-default navbar-btn" type="submit"   value="Register" onClick='location.href="/register"'>
+
 
                                     <c:url value="/j_spring_security_check" var="loginUrl" />
 
                                     <li><form action="${loginUrl}" method="POST">
-                                          Login:   <input class="btn btn-default navbar-btn" type="text" name="j_login" size="10">
+                                            Login:   <input class="btn btn-default navbar-btn" type="text" name="j_login" size="10">
                                          Password: <input class="btn btn-default navbar-btn" type="password" name="j_password" size="10">
                                         <input class="btn btn-default navbar-btn" type="submit" value="Enter" />
 
                                     </form></li>
+                                    <li><input  class="btn btn-default navbar-btn" type="submit"   value="Register" onClick='location.href="/register"'></li>
 
                                        <%--<button type="button" id="register" class="btn btn-default navbar-btn">Register</button> </li>--%>
                                 </ul>
@@ -56,7 +57,7 @@
 
 
                             <c:if test="${param.error ne null}">
-                                <p>Wrong login or password!</p>
+                               <p> Wrong login or password!</p>
                             </c:if>
 
                             <c:if test="${param.logout ne null}">

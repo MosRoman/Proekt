@@ -1,5 +1,5 @@
 body{
-	 background-image:url(images/m1.jpg);
+	 background-image:url(../images/m1.jpg);
 	
 	 
  }
@@ -8,7 +8,7 @@ body{
 	height: 250px;
 	margin:30px 10px;
 
-	background-image:url(images/b2.jpg);
+	background-image:url(../images/b2.jpg);
 	outline:1px solid #111111;
 	position:absolute;
 	left:10px;
@@ -19,8 +19,8 @@ body{
 #wrapper{
 	width:1200px;
 	margin:30px auto;
-	height:900px;
-	background-image:url(images/b2.jpg);
+	/*height:900px;*/
+	background-image:url(../images/b2.jpg);
 	outline:1px solid #111111;
 	position:relative;
 }
@@ -32,7 +32,7 @@ body{
 }
 #content{
 	padding:10px 20px;
-	height:650px;
+
 
 }
 
