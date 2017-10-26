@@ -20,6 +20,8 @@ public class ProductService {
     private TypeRepository typeRepository;
     @Autowired
     private BasketRepository basketRepository;
+    @Autowired
+    private PhotoRepository  photoRepository;
     @Transactional
     public void addOrder(Order order) {
         orderRepository.save(order);
@@ -52,6 +54,11 @@ public class ProductService {
             productRepository.delete(id);
     }
     @Transactional
+    public void deleteProduct(long idList) {
+
+            productRepository.delete(idList);
+    }
+    @Transactional
     public void deleteBasketOrder(long[] idList) {
         for (long id : idList)
             basketRepository.delete(id);
@@ -65,6 +72,15 @@ public class ProductService {
             basketRepository.save(basketOrders);
 
         }
+    }
+    @Transactional
+    public void order(CustomUser customUsers,long idList) {
+
+            Product product = productRepository.getOne(idList);
+            BasketOrders basketOrders = new BasketOrders(customUsers,product.getType(),product.getBrand(),product.getDiametr(),product.getPrice());
+            basketRepository.save(basketOrders);
+
+
     }
 
     @Transactional

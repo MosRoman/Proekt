@@ -4,6 +4,10 @@ import javax.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by Дом on 31.07.2017.
  */
@@ -22,13 +26,15 @@ public class Product {
     @ManyToOne
     @JoinColumn(name="type_id")
     private Type type;
-
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn
+    private Photo photo;
 
     @Column(name = "Brands", nullable = false)
     private String brand;
     @Column
     private double diametr;
-       @Column
+    @Column
     private  double price;
 
     public Product( String brand, double diametr, double price) {
@@ -40,6 +46,14 @@ public class Product {
 
     public Product(Type type, String brand, double diametr, double price) {
         this.type = type;
+        this.brand = brand;
+        this.diametr = diametr;
+        this.price = price;
+    }
+
+    public Product(Type type, Photo photo, String brand, double diametr, double price) {
+        this.type = type;
+        this.photo = photo;
         this.brand = brand;
         this.diametr = diametr;
         this.price = price;

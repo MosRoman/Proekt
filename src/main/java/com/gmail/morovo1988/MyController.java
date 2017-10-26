@@ -115,6 +115,37 @@ public class MyController {
         return "redirect:/";
     }
 
+    @RequestMapping(value = "/order", method = RequestMethod.POST)
+    public String orderProduct(@RequestParam(required = false) long goods) {
+
+        User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        String login = user.getUsername();
+
+        CustomUser dbUser = userService.getUserByLogin(login);
+
+
+            productService.order(dbUser,goods);
+
+
+        return "redirect:/";
+    }
+//    @RequestMapping(value = "/delete", method = RequestMethod.POST)
+//    public String deleteProduct(@RequestParam(required = false) long goods) {
+//
+//        productService.deleteProduct(goods);
+//
+//
+//        return "redirect:/";
+//    }
+//    @RequestMapping(value = "/delete", method = RequestMethod.POST)
+//    public ResponseEntity<Void> delete(@RequestParam( required = false) long goods) {
+//
+//            productService.deleteProduct(goods);
+//
+//        return new ResponseEntity<>(HttpStatus.OK);
+//    }
+
+
     @RequestMapping(value = "/newuser", method = RequestMethod.POST)
     public String update(@RequestParam String login,
                          @RequestParam String password,
@@ -204,6 +235,9 @@ public class MyController {
         }
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
+
+
     @RequestMapping(value = "/add/order", method = RequestMethod.POST)
     public ResponseEntity<Void> orderAdd() {
 
